@@ -1,0 +1,32 @@
+/* Contenedor del menú flotante */
+.menu-flotante {
+  position: fixed;
+  bottom: 30px; /* Separación desde abajo */
+  left: 50%; /* Lo centramos horizontalmente */
+  transform: translateX(-50%);
+  background: rgba(20, 10, 40, 0.7); /* Morado muy oscuro y transparente */
+  backdrop-filter: blur(10px); /* Efecto cristal */
+  padding: 10px 20px;
+  border-radius: 50px; /* Forma de píldora */
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000; /* Asegura que siempre esté por encima del resto del contenido */
+}
+
+/* Diseño de cada botón */
+.btn-nav {
+  color: #a5b4fc; /* Azul clarito */
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por encima */
+.btn-nav:hover {
+  background: rgba(125, 63, 219, 0.5); /* Fondo violeta suave */
+  color: white;
+}

@@ -1,0 +1,142 @@
+/* =========================================
+   FONDO Y TARJETA PRINCIPAL
+   ========================================= */
+
+.fondo-pasion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #4a0404; 
+  background-image: radial-gradient(circle at center, #6e0b0b 0%, #4a0404 100%); 
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-bienvenida {
+  background-color: rgba(60, 4, 4, 0.9); 
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.borde-dorado {
+  border: 2px solid #d4af37; 
+  border-radius: 10px;
+  padding: 40px;
+  position: relative;
+}
+
+.borde-dorado::before, .borde-dorado::after {
+  content: '✦';
+  position: absolute;
+  color: #d4af37;
+  font-size: 1.5rem;
+}
+.borde-dorado::before { top: 10px; left: 10px; }
+.borde-dorado::after { bottom: 10px; right: 10px; }
+
+.contenido-texto {
+  text-align: center;
+}
+
+.titulo-principal {
+  color: #fff8e7; 
+  font-family: 'Playfair Display', serif; 
+  font-size: 4rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.corazon-violeta {
+  font-size: 3rem;
+  vertical-align: middle;
+}
+
+.subtitulo {
+  color: #fdfdfd;
+  font-family: 'Pinyon Script', cursive; 
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+/* =========================================
+   FLORES TRANSPARENTES DE FONDO
+   ========================================= */
+
+.flores-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Detrás de todo */
+  pointer-events: none; /* No estorba los clics */
+}
+
+.flor {
+  position: absolute;
+  display: block;
+  font-size: 20rem; 
+  opacity: 0.04; /* Casi invisibles */
+  filter: grayscale(30%); 
+}
+
+.f1 { top: -10%; left: -5%; transform: rotate(15deg); }
+.f2 { bottom: -15%; right: -10%; transform: rotate(-25deg); font-size: 25rem; }
+.f3 { top: 40%; left: 75%; transform: rotate(45deg); font-size: 15rem; }
+.f4 { bottom: 20%; left: 5%; transform: rotate(-15deg); font-size: 18rem; }
+
+/* =========================================
+   ANIMACIÓN DE CORAZONES FLOTANTES
+   ========================================= */
+
+.corazones-flotantes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1; /* Detrás de la tarjeta pero sobre las flores */
+  pointer-events: none; 
+}
+
+.corazon {
+  position: absolute;
+  display: block;
+  bottom: -50px; 
+  opacity: 0;
+}
+
+@keyframes flotar-izquierda {
+  0% { transform: translateY(0) translateX(0) scale(0.5) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(-110vh) translateX(-150px) scale(1.5) rotate(360deg); opacity: 0; }
+}
+
+@keyframes flotar-derecha {
+  0% { transform: translateY(0) translateX(0) scale(0.5) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(-110vh) translateX(150px) scale(1.2) rotate(-360deg); opacity: 0; }
+}
+
+/* Configuraciones individuales para que se vea natural */
+.c1  { left: 10%; animation: flotar-izquierda 12s linear infinite; font-size: 1.5rem; animation-delay: 0s; }
+.c2  { left: 25%; animation: flotar-derecha 18s linear infinite; font-size: 2.5rem; animation-delay: 2s; }
+.c3  { left: 40%; animation: flotar-izquierda 15s linear infinite; font-size: 1.2rem; animation-delay: 4s; }
+.c4  { left: 55%; animation: flotar-derecha 22s linear infinite; font-size: 3rem; animation-delay: 1s; }
+.c5  { left: 70%; animation: flotar-izquierda 14s linear infinite; font-size: 2rem; animation-delay: 5s; }
+.c6  { left: 85%; animation: flotar-derecha 19s linear infinite; font-size: 1.8rem; animation-delay: 3s; }
+.c7  { left: 15%; animation: flotar-izquierda 16s linear infinite; font-size: 2.2rem; animation-delay: 6s; }
+.c8  { left: 75%; animation: flotar-derecha 13s linear infinite; font-size: 1.6rem; animation-delay: 7s; }
+.c9  { left: 5%;  animation: flotar-izquierda 20s linear infinite; font-size: 1.1rem; animation-delay: 8s; }
+.c10 { left: 90%; animation: flotar-derecha 15s linear infinite; font-size: 2.4rem; animation-delay: 9s; }

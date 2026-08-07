@@ -1,0 +1,44 @@
+<div class="fondo-universo-animado">
+  
+  <!-- Reproductor de Audio (Lee desde public/assets/audio/cancion.mp3) -->
+  <audio #audioPlayer src="assets/audio/Take My Breath Away.mp3" loop></audio>
+
+  <!-- Botón Discreto para la Música -->
+  <button class="btn-musica" (click)="toggleMusica()" [class.latiendo]="reproduciendo">
+    {{ reproduciendo ? '🎶' : '🎵' }}
+  </button>
+
+  <div class="indicador-musica" [class.oculta]="reproduciendo">
+    Ponle música 👉
+  </div>
+
+  <!-- Luces flotantes de fondo -->
+  <div class="luces-magicas">
+    <span class="luz"></span>
+    <span class="luz"></span>
+    <span class="luz"></span>
+    <span class="luz"></span>
+    <span class="luz"></span>
+  </div>
+
+  <div class="contenido-carta">
+    <div class="cabecera-amor">
+      <h1>Hola, mi amor 💜</h1>
+    </div>
+    
+    <div class="texto-amor">
+      <p>He estado pensando mucho en nosotros, en la forma en que me miras y en el fuego que provocas en mí. Como escribió Cortázar: <em>"Toco tu boca, con un dedo toco el borde de tu boca... me miras, de cerca me miras, cada vez más de cerca y entonces jugamos al cíclope, nos miramos cada vez más de cerca y los ojos se agrandan, se acercan entre sí, se superponen..."</em> Siento que el mundo entero desaparece cuando nuestras respiraciones chocan.</p>
+      
+      <p>Eres mi lugar seguro, pero también mi perdición absoluta. Hay un poema de Oliverio Girondo que describe exactamente la tensión que me haces sentir cuando estamos a solas: <em>"Se miran, se presienten, se desean, se acarician, se besan, se desnudan, se respiran, se acuestan, se olfatean, se penetran, se chupan, se desmayan, se reviven, se resplandecen, se contemplan..."</em></p>
+      
+      <p>Me desarmas por completo. Tienes esa magia que me enciende la sangre. Ya lo decía Gioconda Belli: <em>"Recórreme como si fueras a quedarte a vivir en mí."</em> Y eso es lo que quiero, ser el dueño de cada escalofrío en tu piel, de cada vez que te muerdes el labio y de cada suspiro que se te escapa cuando mis manos te encuentran.</p>
+
+      <p><em>"Sed de ti me acosa en las noches hambrientas,"</em> escribía Neruda, y te juro que nunca había entendido tanto esas palabras hasta que probé tu sabor. Quería dejarte este espacio para recordarte que te amo y te deseo con locura. <em>"Mi estrategia es que un día cualquiera, no sé cómo ni con qué pretexto, por fin me necesites,"</em> exactamente de la misma forma insaciable en la que yo te necesito a ti.</p>
+    </div>
+    
+    <div class="despedida-amor">
+      <p>Te quiero con toda mi alma, y con toda mi piel.</p>
+      <p class="firma">- Daniel</p>
+    </div>
+  </div>
+</div>

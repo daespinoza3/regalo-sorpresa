@@ -1,0 +1,30 @@
+<div class="fondo-galeria">
+  <div class="contenedor-principal">
+    
+    <div class="textos-superiores">
+      <h1 class="titulo-galeria">Nuestros Mejores Momentos ✨</h1>
+      <p class="subtitulo">Cada foto es un instante en el que fui inmensamente feliz.</p>
+    </div>
+    
+    <!-- La "mesa" gigante donde Angular aventará las fotos al azar -->
+    <div class="mesa-de-fotos">
+      
+      <!-- Angular repite este bloque 13 veces y aplica las posiciones matemáticas -->
+      <div class="polaroid" 
+           *ngFor="let foto of fotosRegadas" 
+           [style.top.%]="foto.top" 
+           [style.left.%]="foto.left"
+           [style.transform]="'rotate(' + foto.rotacion + 'deg)'"
+           [style.animation-duration.s]="foto.duracionAnimacion"
+           [style.animation-delay.s]="foto.retrasoAnimacion">
+        
+        <div class="imagen-container">
+          <img [src]="'/assets/image/' + foto.img" [alt]="foto.texto">
+        </div>
+        <div class="texto-polaroid">{{ foto.texto }}</div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>

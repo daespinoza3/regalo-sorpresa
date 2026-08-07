@@ -1,0 +1,115 @@
+/* =========================================
+   FONDO Y CONTENEDORES
+   ========================================= */
+
+.fondo-galeria {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d1b3f 0%, #180a33 50%, #2c1a4d 100%);
+  padding: 30px 10px 80px 10px; /* Menos padding lateral para aprovechar el espacio */
+  display: flex;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+.contenedor-principal {
+  /* AQUÍ ESTÁ LA MAGIA: Le decimos que ocupe todo el ancho posible */
+  max-width: 100%; 
+  width: 95vw; 
+  display: flex;
+  flex-direction: column;
+}
+
+.textos-superiores {
+  text-align: center;
+  z-index: 50; 
+  position: relative;
+}
+
+.titulo-galeria {
+  color: #d8b4fe;
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.subtitulo {
+  color: #a5b4fc;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* =========================================
+   LA MESA DE FOTOS (MÁS ALTA PARA MÁS ESPACIO)
+   ========================================= */
+
+.mesa-de-fotos {
+  position: relative; 
+  flex-grow: 1;
+  min-height: 80vh; /* Mesa más grande para esparcir mejor las fotos */
+  width: 100%;
+}
+
+/* =========================================
+   ESTILO DE LAS FOTOS TIPO POLAROID
+   ========================================= */
+
+.polaroid {
+  background: #fdfdfd;
+  padding: 12px 12px 20px 12px;
+  border-radius: 5px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  width: 200px; /* Un pelín más pequeñas para que respiren mejor en pantalla */
+  cursor: pointer;
+  position: absolute; 
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  animation: flotar-foto ease-in-out infinite;
+}
+
+.imagen-container {
+  width: 100%;
+  height: 200px; 
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.imagen-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.5s ease;
+}
+
+.texto-polaroid {
+  font-family: 'Cursive', sans-serif;
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================================
+   ANIMACIÓN DE FLOTACIÓN
+   ========================================= */
+
+@keyframes flotar-foto {
+  0%, 100% { margin-top: 0px; }
+  50% { margin-top: -15px; }
+}
+
+/* =========================================
+   EL MAGNÉTICO EFECTO HOVER
+   ========================================= */
+
+.polaroid:hover {
+  transform: scale(1.4) rotate(0deg) !important; 
+  box-shadow: 0 25px 50px rgba(125, 63, 219, 0.9); 
+  z-index: 100 !important; 
+  animation-play-state: paused; 
+}
+
+.polaroid:hover .imagen-container img {
+  transform: scale(1.08); 
+}
