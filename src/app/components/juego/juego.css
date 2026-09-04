@@ -1,0 +1,124 @@
+.fondo-juego {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  padding: 20px 10px 80px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-juego { text-align: center; width: 100%; max-width: 600px; }
+.titulo-juego { color: #e879f9; font-family: 'Georgia', serif; font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
+.subtitulo { color: #a5b4fc; margin-bottom: 20px; }
+
+.controles { margin-bottom: 20px; }
+.btn-dado {
+  background: #c026d3; color: white; border: none; padding: 12px 30px;
+  font-size: 1.2rem; border-radius: 30px; cursor: pointer; font-weight: bold;
+  box-shadow: 0 4px 15px rgba(192, 38, 211, 0.4); transition: 0.3s;
+}
+.btn-dado:hover:not([disabled]) { transform: scale(1.05); background: #a21caf; }
+.btn-dado[disabled] { opacity: 0.5; }
+
+/* ==============================
+   EL TABLERO TIPO MAPA
+   ============================== */
+.tablero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Espacio entre filas */
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #818cf8;
+}
+
+.fila {
+  display: flex;
+  gap: 8px; /* Espacio entre casillas */
+  justify-content: space-between;
+}
+
+.casilla {
+  width: calc(20% - 8px); /* 5 columnas exactas */
+  aspect-ratio: 1;
+  background: #312e81;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* Colores para cada tipo de casilla */
+.casilla.inicio { background: #4f46e5; border-color: #818cf8; }
+.casilla.meta { background: #db2777; border-color: #fbcfe8; }
+.casilla.pregunta { background: #6b21a8; }
+.casilla.avanza { background: #059669; } /* Verde para subir */
+.casilla.retrocede { background: #be123c; } /* Rojo para bajar */
+
+.numero {
+  position: absolute;
+  top: 4px; left: 6px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+}
+
+.icono-casilla {
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+.ficha {
+  position: absolute;
+  font-size: 2.2rem;
+  animation: saltito 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+}
+
+@keyframes saltito {
+  0% { transform: translateY(-30px) scale(1.2); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ==============================
+   MODALES
+   ============================== */
+.modal-pregunta {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center;
+  z-index: 1000; backdrop-filter: blur(5px);
+}
+
+.contenido-modal {
+  background: #1e1b4b; padding: 25px; border-radius: 20px;
+  border: 2px solid #c026d3; text-align: center; max-width: 90%; width: 350px;
+}
+
+.contenido-modal h3 { color: #e879f9; margin-bottom: 10px; }
+.contenido-modal p { color: #e0e7ff; margin-bottom: 20px; }
+
+.opciones { display: flex; flex-direction: column; gap: 8px; }
+.btn-opcion, .btn-continuar {
+  background: #4c1d95; color: white; border: 1px solid #8b5cf6;
+  padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.2s;
+}
+.btn-opcion:hover, .btn-continuar:hover { background: #6d28d9; }
+
+.error-animacion { animation: vibrar 0.4s ease; border-color: #ef4444; }
+@keyframes vibrar {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+}
+
+.mensaje-victoria {
+  background: rgba(219, 39, 119, 0.2); padding: 20px; border-radius: 15px;
+  border: 1px solid #fbcfe8; margin-top: 20px; animation: saltito 0.5s ease-out;
+}
+.mensaje-victoria h2 { color: #fbcfe8; }
+.mensaje-victoria p { color: #fce7f3; font-size: 1.1rem; }

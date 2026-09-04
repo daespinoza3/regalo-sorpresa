@@ -1,23 +1,32 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-carta',
   standalone: true,
-  imports: [RouterLink],
+  imports: [CommonModule],
   templateUrl: './carta.html',
   styleUrl: './carta.css'
 })
 export class Carta {
-  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-  reproduciendo = false;
+  cartaAmorAbierta = false;
+  cartaCumpleAbierta = false;
 
-  toggleMusica() {
-    if (this.reproduciendo) {
-      this.audioPlayer.nativeElement.pause();
-    } else {
-      this.audioPlayer.nativeElement.play();
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+
+  abrirCarta(tipo: string) {
+    if (tipo === 'amor') this.cartaAmorAbierta = true;
+    if (tipo === 'cumple') this.cartaCumpleAbierta = true;
+    
+    // La canción suena sin importar cuál abra primero
+    if (this.audioPlayer) {
+      this.audioPlayer.nativeElement.play().catch(err => console.log('Esperando interacción'));
     }
-    this.reproduciendo = !this.reproduciendo;
+  }
+
+  cerrarCarta(event: Event, tipo: string) {
+    event.stopPropagation(); 
+    if (tipo === 'amor') this.cartaAmorAbierta = false;
+    if (tipo === 'cumple') this.cartaCumpleAbierta = false;
   }
 }

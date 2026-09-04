@@ -1,9 +1,8 @@
-<!-- Aquí es donde Angular inyecta el Inicio, la Carta o la Galería -->
-<router-outlet></router-outlet>
-
-<!-- Este es nuestro menú flotante global -->
 <nav class="menu-flotante">
-  <a routerLink="/" class="btn-nav">Inicio</a>
-  <a routerLink="/carta" class="btn-nav">Carta</a>
-  <a routerLink="/galeria" class="btn-nav">Galería</a>
+  <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+  <a routerLink="/carta" routerLinkActive="activo">Carta</a>
+  <a routerLink="/galeria" routerLinkActive="activo">Galería</a>
+  <a routerLink="/juego" routerLinkActive="activo">Juego</a>
 </nav>
+
+<router-outlet></router-outlet>

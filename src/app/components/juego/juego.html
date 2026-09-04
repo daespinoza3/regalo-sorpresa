@@ -1,0 +1,67 @@
+<div class="fondo-juego">
+  <div class="contenedor-juego">
+    <h1 class="titulo-juego">El Mapa de Nuestra Historia 🗺️</h1>
+    <p class="subtitulo" *ngIf="!juegoTerminado">Avanza o retrocede... ¡todo depende de tu memoria!</p>
+    
+    <div class="controles" *ngIf="!juegoTerminado">
+      <button class="btn-dado" (click)="tirarDado()" [disabled]="preguntaActual || mensajeEspecial">
+        🎲 Tirar Dado <span *ngIf="dado > 0">(Salió {{dado}})</span>
+      </button>
+    </div>
+
+    <!-- Tablero ZigZag -->
+    <div class="tablero" *ngIf="!juegoTerminado">
+      <div class="fila" *ngFor="let fila of filas">
+        <div class="casilla" *ngFor="let c of fila" 
+             [class.meta]="c === totalCasillas"
+             [class.inicio]="c === 1"
+             [class.pregunta]="esCasillaPregunta(c)"
+             [class.avanza]="esCasillaAvanza(c)"
+             [class.retrocede]="esCasillaRetrocede(c)">
+          
+          <span class="numero">{{ c === totalCasillas ? 'Meta' : c }}</span>
+          
+          <div class="icono-casilla" *ngIf="esCasillaPregunta(c)">❓</div>
+          <div class="icono-casilla" *ngIf="esCasillaAvanza(c)">✨</div>
+          <div class="icono-casilla" *ngIf="esCasillaRetrocede(c)">💔</div>
+
+          <!-- Tu novia -->
+          <div class="ficha" *ngIf="posicionActual === c">🏃‍♀️</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Preguntas -->
+    <div class="modal-pregunta" *ngIf="preguntaActual">
+      <div class="contenido-modal" [class.error-animacion]="mensajeError">
+        <h3 *ngIf="!mensajeError">¡Pregunta Sorpresa! 💌</h3>
+        <h3 *ngIf="mensajeError" style="color: #ff6b6b;">¡Uy, te equivocaste!</h3>
+        
+        <p *ngIf="!mensajeError">{{ preguntaActual.texto }}</p>
+        <p *ngIf="mensajeError">Castigo: Retrocedes 4 casillas.</p>
+
+        <div class="opciones" *ngIf="!mensajeError">
+          <button class="btn-opcion" *ngFor="let op of preguntaActual.opciones" (click)="responder(op)">
+            {{ op }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Acción Especial (Avanza/Retrocede) -->
+    <div class="modal-pregunta" *ngIf="mensajeEspecial">
+      <div class="contenido-modal">
+        <h3>{{ mensajeEspecial.tipo === 'avanza' ? '¡Qué suerte! 🥰' : '¡Oh no! 🙈' }}</h3>
+        <p>{{ mensajeEspecial.mensaje }}</p>
+        <button class="btn-continuar" (click)="aplicarAccion()">Aceptar</button>
+      </div>
+    </div>
+
+  <!-- Mensaje final al ganar -->
+    <div class="mensaje-victoria" *ngIf="juegoTerminado">
+      <h2>¡Llegaste a la meta, mi amor! 🎉</h2>
+      <p>Superaste todas las pruebas de nuestro mapa. Por tu excelente memoria y por hacerme tan feliz, te haces acreedora a <strong>UN DESEO</strong> (válido por una salida, tu comida favorita, un masaje o lo que tú elijas).</p>
+      <p style="margin-top: 10px; font-weight: bold; color: #fbcfe8;">¡Cóbralo cuando quieras!</p>
+    </div>
+  </div>
+</div>
