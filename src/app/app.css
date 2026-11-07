@@ -1,32 +1,64 @@
 /* Contenedor del menú flotante */
 .menu-flotante {
   position: fixed;
-  bottom: 30px; /* Separación desde abajo */
+  bottom: 25px; /* Separación desde abajo */
   left: 50%; /* Lo centramos horizontalmente */
   transform: translateX(-50%);
-  background: rgba(20, 10, 40, 0.7); /* Morado muy oscuro y transparente */
-  backdrop-filter: blur(10px); /* Efecto cristal */
-  padding: 10px 20px;
+  background: rgba(20, 10, 40, 0.75); /* Morado muy oscuro y transparente */
+  backdrop-filter: blur(12px); /* Efecto cristal */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 16px;
   border-radius: 50px; /* Forma de píldora */
   display: flex;
-  gap: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(125, 63, 219, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   z-index: 1000; /* Asegura que siempre esté por encima del resto del contenido */
+  max-width: 90vw;
 }
 
-/* Diseño de cada botón */
+/* Diseño de cada botón / enlace */
+.menu-flotante a,
 .btn-nav {
-  color: #a5b4fc; /* Azul clarito */
+  color: #c7d2fe; /* Azul / lila suave */
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 10px 18px;
   border-radius: 30px;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  user-select: none;
 }
 
 /* Efecto al pasar el mouse por encima */
+.menu-flotante a:hover,
 .btn-nav:hover {
-  background: rgba(125, 63, 219, 0.5); /* Fondo violeta suave */
-  color: white;
+  background: rgba(125, 63, 219, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Botón de la pestaña activa */
+.menu-flotante a.activo {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.45);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+  .menu-flotante {
+    bottom: 15px;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .menu-flotante a,
+  .btn-nav {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
 }
