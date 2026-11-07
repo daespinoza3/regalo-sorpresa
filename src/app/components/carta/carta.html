@@ -1,6 +1,14 @@
 <div class="fondo-carta">
   
-  <audio #audioPlayer src="assets/cancion.mp3" loop></audio>
+  <audio #audioPlayer preload="auto" loop>
+    <source src="assets/cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Botón flotante para controlar la música en cualquier momento -->
+  <button class="btn-musica" (click)="toggleMusica($event)" [attr.aria-label]="reproduciendo ? 'Pausar música' : 'Reproducir música'">
+    <span class="icono-nota" [class.animar]="reproduciendo">{{ reproduciendo ? '🎵' : '🔇' }}</span>
+    <span class="texto-musica">{{ reproduciendo ? 'Pausar canción' : 'Reproducir canción' }}</span>
+  </button>
 
   <div class="cartas-container">
     

@@ -11,16 +11,38 @@ import { CommonModule } from '@angular/common';
 export class Carta {
   cartaAmorAbierta = false;
   cartaCumpleAbierta = false;
+  reproduciendo = false;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+
+  toggleMusica(event?: Event) {
+    if (event) event.stopPropagation();
+    if (!this.audioPlayer) return;
+    const audio = this.audioPlayer.nativeElement;
+    if (this.reproduciendo) {
+      audio.pause();
+      this.reproduciendo = false;
+    } else {
+      audio.play().then(() => {
+        this.reproduciendo = true;
+      }).catch(err => {
+        console.warn('Error al reproducir audio:', err);
+      });
+    }
+  }
 
   abrirCarta(tipo: string) {
     if (tipo === 'amor') this.cartaAmorAbierta = true;
     if (tipo === 'cumple') this.cartaCumpleAbierta = true;
     
-    // La canción suena sin importar cuál abra primero
-    if (this.audioPlayer) {
-      this.audioPlayer.nativeElement.play().catch(err => console.log('Esperando interacción'));
+    // Iniciar canción al abrir cualquiera de las cartas
+    if (this.audioPlayer && !this.reproduciendo) {
+      const audio = this.audioPlayer.nativeElement;
+      audio.play().then(() => {
+        this.reproduciendo = true;
+      }).catch(err => {
+        console.warn('Esperando interacción del usuario o error:', err);
+      });
     }
   }
 
