@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class Carta {
   cartaAmorAbierta = false;
   cartaCumpleAbierta = false;
+  cartaAniversarioAbierta = false;
   reproduciendo = false;
 
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
@@ -34,6 +35,7 @@ export class Carta {
   abrirCarta(tipo: string) {
     if (tipo === 'amor') this.cartaAmorAbierta = true;
     if (tipo === 'cumple') this.cartaCumpleAbierta = true;
+    if (tipo === 'aniversario') this.cartaAniversarioAbierta = true;
     
     // Iniciar canción al abrir cualquiera de las cartas
     if (this.audioPlayer && !this.reproduciendo) {
@@ -50,5 +52,6 @@ export class Carta {
     event.stopPropagation(); 
     if (tipo === 'amor') this.cartaAmorAbierta = false;
     if (tipo === 'cumple') this.cartaCumpleAbierta = false;
+    if (tipo === 'aniversario') this.cartaAniversarioAbierta = false;
   }
 }

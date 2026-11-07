@@ -55,16 +55,17 @@
   }
 }
 
-/* Contenedor principal que acomoda las dos cartas */
+/* Contenedor principal que acomoda las cartas */
 .cartas-container {
   display: flex;
-  gap: 60px; /* Separación entre las cartas */
+  gap: 50px; /* Separación entre las cartas */
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; /* Si la pantalla es pequeña, una se pone debajo de la otra */
-  max-width: 900px;
+  max-width: 1150px;
   width: 100%;
   padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 /* ==============================
@@ -170,6 +171,24 @@
 .sobre-cumple .sobre { background: #4c1d95; }
 .sobre-cumple .cuerpo-sobre { background: #6d28d9; }
 .sobre-cumple .solapa { background: #8b5cf6; }
+
+/* ==============================
+   DISEÑO DEL SOBRE (4 AÑOS / ANIVERSARIO - ORO/ÁMBAR)
+   ============================== */
+.contenedor-sobre.sobre-aniversario:not(.abierto) {
+  animation: flotar-aniversario 3.8s ease-in-out infinite;
+}
+
+@keyframes flotar-aniversario {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+.sobre-aniversario .sobre { background: #92400e; }
+.sobre-aniversario .cuerpo-sobre { background: #b45309; }
+.sobre-aniversario .solapa { background: #d97706; }
+.sobre-aniversario .papel h2 { color: #78350f !important; }
+.sobre-aniversario .firma { color: #78350f !important; }
 
 /* ==============================
    EL PAPEL (ESTILO PAPIRO QUEMADO)

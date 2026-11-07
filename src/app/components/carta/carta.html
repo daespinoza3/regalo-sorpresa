@@ -85,5 +85,50 @@
       </div>
     </div>
 
+
+    <!-- ============================================== -->
+    <!-- CARTA 3: ANIVERSARIO 4 AÑOS (DORADO/ÁMBAR)    -->
+    <!-- ============================================== -->
+    <div class="contenedor-sobre sobre-aniversario" [class.abierto]="cartaAniversarioAbierta" (click)="!cartaAniversarioAbierta && abrirCarta('aniversario')">
+      
+      <div class="indicador" *ngIf="!cartaAniversarioAbierta">
+        <span>Felices 4 Años</span>
+        <div class="flecha">⬇️</div>
+      </div>
+
+      <div class="sobre">
+        <div class="solapa"></div>
+        <div class="cuerpo-sobre">
+          <div class="corazon-sello">✨</div>
+        </div>
+      </div>
+
+      <div class="papel">
+        <button class="btn-cerrar" *ngIf="cartaAniversarioAbierta" (click)="cerrarCarta($event, 'aniversario')">✖</button>
+        
+        <h2 style="color: #92400e;">Nuestra Promesa Eterna ♾️</h2>
+        
+        <div class="texto-amor">
+          <p><strong>Mi amada Tatiana,</strong></p>
+          
+          <p>Hoy mi mente y mi corazón viajan en el tiempo hasta aquel 7 de noviembre de 2022. Han pasado exactamente cuatro años desde que nuestros mundos coincidieron, y al mirar hacia atrás, me conmueve profundamente ver todo lo que hemos construido. No solo nos hemos acompañado, sino que hemos crecido juntos. Recordar cuando nos graduamos del colegio unidos me llena de una nostalgia preciosa; éramos tan jóvenes, con la vida entera por delante, y desde esos pasillos y aulas yo ya sabía que mi mayor sueño era seguir caminando de tu mano hacia el futuro.</p>
+          
+          <p>Hemos compartido etapas inolvidables, instantes que están tatuados en lo más profundo de mi ser. Y entre todos esos recuerdos, brilla de manera especial aquel 1 de abril de 2023. Ese día en el que dejamos atrás nuestra inocencia para entregarnos por completo el uno al otro. Fue un acto de amor puro, de vulnerabilidad y de confianza absoluta. En ese instante en el que nuestras almas y cuerpos se unieron de una forma tan íntima e irrepetible, entendí que lo nuestro iba mucho más allá de lo que cualquier palabra pudiera describir.</p>
+          
+          <p>Tatiana, no quiero ocultar ni ignorar que últimamente las cosas no han estado en su mejor momento. Hemos navegado por aguas turbulentas y los días grises han puesto a prueba nuestra resistencia. Pero te escribo esta carta para que tengas una certeza inquebrantable que apague cualquier duda: mi amor por ti es total, sincero e incondicional.</p>
+
+          <p>Los grandes poetas han intentado siempre descifrar este sentimiento. Algunos sugieren que el verdadero amor es aquel que habita en lo más profundo y secreto del alma, ese que se siente de forma directa, sin orgullo y sin necesidad de buscar explicaciones. Otros afirman que el amor real se demuestra siendo un refugio seguro, la certeza absoluta de que el otro siempre estará ahí, no solo en la luz, sino sobre todo en la oscuridad. Y así es exactamente como te amo. Hago mías esas ideas para prometerte que siempre podrás contar conmigo, que mi abrazo será siempre tu lugar seguro cuando el mundo afuera se vuelva demasiado pesado.</p>
+
+          <p>Estas dificultades recientes no me han hecho dudar; al contrario, me han confirmado que no quiero enfrentar la vida con nadie más que contigo. No busco el camino fácil, busco el camino a tu lado. Quiero luchar por nosotros, sanar lo que debamos sanar y seguir adelante con más fuerza. Eres la mujer de mi vida, la dueña de mi corazón y la única persona con la que quiero compartir el resto de mis días.</p>
+
+          <p>Gracias por estos cuatro años, por enseñarme a amar, por crecer a mi lado y por ser tú. Vamos a superar esto juntos, mi amor, porque nuestra historia, todo lo que hemos vivido desde el colegio hasta hoy, es demasiado grande y hermoso.</p>
+
+          <p>Te amo con cada rincón de mi alma, hoy y para toda la vida.</p>
+        </div>
+        
+        <p class="firma" style="color: #78350f;">- Daniel</p>
+      </div>
+    </div>
+
   </div>
 </div>
