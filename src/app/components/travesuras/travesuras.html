@@ -8,7 +8,38 @@
     <span class="chispa ch5">🌶️</span>
   </div>
 
-  <div class="tarjeta-travesuras">
+  <!-- PANTALLA DE BLOQUEO CON CONTRASEÑA -->
+  <div class="tarjeta-travesuras tarjeta-candado animacion-entrada" *ngIf="!estaDesbloqueado">
+    <div class="icono-candado">🔒</div>
+    <h1 class="titulo-travesuras">Área Privada</h1>
+    <p class="texto-bienvenida">
+      Este rincón secreto requiere contraseña para ingresar.
+    </p>
+
+    <form class="formulario-clave" (ngSubmit)="verificarClave()">
+      <div class="input-clave-wrapper" [class.input-error]="errorClave">
+        <input 
+          type="password" 
+          [(ngModel)]="claveIngresada" 
+          name="clave"
+          placeholder="Ingresa la contraseña..."
+          class="input-clave" 
+          autocomplete="off"
+          autofocus />
+      </div>
+
+      <p class="mensaje-error" *ngIf="errorClave">
+        ❌ Contraseña incorrecta. Inténtalo de nuevo.
+      </p>
+
+      <button type="submit" class="btn-desbloquear" [disabled]="!claveIngresada.trim()">
+        Entrar 🔥
+      </button>
+    </form>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL DE TRAVESURAS (CUANDO ESTÁ DESBLOQUEADO) -->
+  <div class="tarjeta-travesuras animacion-entrada" *ngIf="estaDesbloqueado">
     <div class="encabezado-seccion">
       <h1 class="titulo-travesuras">Travesuras 🔥</h1>
       <p class="texto-bienvenida">
@@ -60,7 +91,7 @@
           class="btn-accion btn-whatsapp" 
           [disabled]="!esMensajeValido" 
           (click)="enviarPorWhatsApp()">
-          <span class="icono-wpp">💬</span> Enviar por WhatsApp
+          Enviar
         </button>
       </div>
     </div>

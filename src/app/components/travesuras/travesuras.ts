@@ -10,11 +10,29 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './travesuras.css'
 })
 export class Travesuras {
+  readonly CLAVE_SECRETA = '07112022DT';
   numeroDaniel = '593959678740';
   numeroTatiana = '593999301653';
 
+  estaDesbloqueado = false;
+  claveIngresada: string = '';
+  errorClave = false;
+
   destinatarioSeleccionado: 'Daniel' | 'Tatiana' | null = null;
   mensajeDeseo: string = '';
+
+  verificarClave() {
+    if (this.claveIngresada.trim() === this.CLAVE_SECRETA) {
+      this.estaDesbloqueado = true;
+      this.errorClave = false;
+      this.claveIngresada = '';
+    } else {
+      this.errorClave = true;
+      setTimeout(() => {
+        this.errorClave = false;
+      }, 3000);
+    }
+  }
 
   seleccionarDestinatario(destinatario: 'Daniel' | 'Tatiana') {
     this.destinatarioSeleccionado = destinatario;
