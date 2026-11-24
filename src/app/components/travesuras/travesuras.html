@@ -1,0 +1,68 @@
+<div class="fondo-travesuras">
+  <!-- Efectos visuales de fondo -->
+  <div class="fuego-fondo">
+    <span class="chispa ch1">🔥</span>
+    <span class="chispa ch2">✨</span>
+    <span class="chispa ch3">💋</span>
+    <span class="chispa ch4">🔥</span>
+    <span class="chispa ch5">🌶️</span>
+  </div>
+
+  <div class="tarjeta-travesuras">
+    <div class="encabezado-seccion">
+      <h1 class="titulo-travesuras">Travesuras 🔥</h1>
+      <p class="texto-bienvenida">
+        Este rincón está destinado a solicitudes para que Daniel se entregue a Tatiana y Tatiana se entregue a Daniel.
+      </p>
+    </div>
+
+    <!-- SELECCIÓN INICIAL DE DESTINATARIO -->
+    <div class="contenedor-seleccion" *ngIf="!destinatarioSeleccionado">
+      <p class="subtitulo-pregunta">¿Para quién es la solicitud hoy?</p>
+      
+      <div class="grupo-botones-roles">
+        <button class="btn-rol btn-daniel" (click)="seleccionarDestinatario('Daniel')">
+          <span class="icono-rol">😈</span>
+          <span class="nombre-rol">Para Daniel</span>
+          <span class="desc-rol">Tatiana solicita</span>
+        </button>
+
+        <button class="btn-rol btn-tatiana" (click)="seleccionarDestinatario('Tatiana')">
+          <span class="icono-rol">💋</span>
+          <span class="nombre-rol">Para Tatiana</span>
+          <span class="desc-rol">Daniel solicita</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- EDITOR DE TEXTO -->
+    <div class="contenedor-editor animacion-entrada" *ngIf="destinatarioSeleccionado">
+      <div class="badge-destinatario" [ngClass]="destinatarioSeleccionado === 'Daniel' ? 'badge-daniel' : 'badge-tatiana'">
+        <span>Solicitud especial para <strong>{{ destinatarioSeleccionado }}</strong> {{ destinatarioSeleccionado === 'Daniel' ? '😈' : '💋' }}</span>
+      </div>
+
+      <div class="campo-texto-wrapper">
+        <textarea
+          [(ngModel)]="mensajeDeseo"
+          placeholder="Escribe lo que deseas..."
+          rows="5"
+          class="area-deseo"
+          autofocus>
+        </textarea>
+      </div>
+
+      <div class="acciones-editor">
+        <button class="btn-accion btn-volver" (click)="volver()">
+          ← Volver
+        </button>
+
+        <button 
+          class="btn-accion btn-whatsapp" 
+          [disabled]="!esMensajeValido" 
+          (click)="enviarPorWhatsApp()">
+          <span class="icono-wpp">💬</span> Enviar por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

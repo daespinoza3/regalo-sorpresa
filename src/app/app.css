@@ -49,16 +49,25 @@
 }
 
 /* Ajustes para móviles */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .menu-flotante {
-    bottom: 15px;
-    padding: 6px 10px;
-    gap: 6px;
+    bottom: 12px;
+    padding: 6px 8px;
+    gap: 4px;
+    max-width: 96vw;
   }
 
   .menu-flotante a,
   .btn-nav {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-flotante a,
+  .btn-nav {
+    padding: 6px 8px;
+    font-size: 0.72rem;
   }
 }
